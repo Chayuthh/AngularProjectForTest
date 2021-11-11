@@ -6,7 +6,7 @@ import { MenuDetail } from './menu-detail.model';
   providedIn: 'root',
 })
 export class MenuDetailService {
-  apiURL = 'http://localhost:3000';
+  readonly apiURL = 'http://192.168.1.42:5041/api/PraticeModels';
   constructor(private http: HttpClient) {}
 
   httpOptions = {
@@ -16,4 +16,8 @@ export class MenuDetailService {
   };
 
   formData: MenuDetail = new MenuDetail();
+
+  postNameDetail() {
+    return this.http.post(this.apiURL, this.formData);
+  }
 }
