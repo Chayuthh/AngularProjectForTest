@@ -16,8 +16,24 @@ export class MenuDetailService {
   };
 
   formData: MenuDetail = new MenuDetail();
+  list?: MenuDetail[];
 
   postNameDetail() {
     return this.http.post(this.apiURL, this.formData);
+  }
+
+  puttNameDetail() {
+    return this.http.put(`${this.apiURL}/${this.formData.id}`, this.formData);
+  }
+
+  deleteNameDetail(id: number) {
+    return this.http.delete(`${this.apiURL}/${id}`);
+  }
+
+  refreshList() {
+    this.http
+      .get(this.apiURL)
+      .toPromise()
+      .then((res) => (this.list = res as MenuDetail[]));
   }
 }

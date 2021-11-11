@@ -8,5 +8,23 @@
   </div>
   <div class="col-md-6">
       <span>List of name register</span>
+      <table class="table">
+          <thead class="thead-light">
+            <tr>
+                <th>Name</th>
+                <th>Nick name</th>
+                <th></th>
+            </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let item of service.list">
+                  <td (click)="populateForm(item)">{{item.name}}</td>
+                  <td (click)="populateForm(item)">{{item.nickName}}</td>
+                  <td>
+                      <button class="btn btn-danger btn-sm btn-block" (click)="onDelete(item.id)">Delete</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
   </div>
 </div>
